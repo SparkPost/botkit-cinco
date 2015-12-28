@@ -1,0 +1,28 @@
+{
+  "name": "botkit-cinco",
+  "version": "0.0.1",
+  "description": "Cinco Facetime Party Snoozer Slack Bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/colestrode/botkit-cinco.git"
+  },
+  "keywords": [
+    "cinco",
+    "facetime",
+    "party",
+    "snoozer"
+  ],
+  "author": "Cole Furfaro-Strode",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/colestrode/botkit-cinco/issues"
+  },
+  "homepage": "https://github.com/colestrode/botkit-cinco#readme",
+  "dependencies": {
+    "lodash": "^3.10.1"
+  }
+}
