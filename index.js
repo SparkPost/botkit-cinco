@@ -1,4 +1,5 @@
-var Botkit = require('botkit');
+var Botkit = require('botkit')
+  , _ = require('lodash');
 
 var controller = Botkit.slackbot({
   debug: false
@@ -11,8 +12,18 @@ controller.spawn({
 
 
 // give the bot something to listen for.
-controller.hears('hello','direct_message,direct_mention,mention',function(bot,message) {
-
-  bot.reply(message,'Sure, why not');
-
+controller.on('ambient', function (bot, message) {
+  bot.reply(message, getResponse());
 });
+
+function getResponse() {
+  var responses = [
+    'Sounds good',
+    'Thanks for coming',
+    'OK',
+    'Sure, why not',
+    'I understand'
+  ];
+
+  return _.sample(responses);
+}
