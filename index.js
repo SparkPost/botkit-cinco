@@ -36,7 +36,7 @@ function getResponse() {
 
 // volume-related responses
 controller.hears('louder', directAddress, function(bot, message) {
-  volume.louder(channel);
+  volume.louder(message.channel);
   volumeResponse(bot, message);
 });
 
