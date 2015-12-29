@@ -62,5 +62,6 @@ controller.hears('quietest', directAddress, function(bot, message) {
 controller.hears('volume', directAddress, volumeResponse);
 
 function volumeResponse(bot, message) {
+  console.log(message);
   bot.reply(message, 'Volume set to ' + volume.value(message.channel));
 }
