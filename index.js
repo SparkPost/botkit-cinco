@@ -12,12 +12,29 @@ controller.spawn({
   token: process.env.SLACK_API_TOKEN
 }).startRTM();
 
-
+// the ***magic***
 controller.on('ambient', function (bot, message) {
   volume.defaultIfNotSet(message.channel);
-  bot.reply(message, getResponse());
+
+  if (volume.loudEnough(message.channel)) {
+    bot.reply(message, getResponse());
+  }
 });
 
+function getResponse() {
+  var responses = [
+    'Sounds good',
+    'Thanks for coming',
+    'OK',
+    'Sure, why not',
+    'I understand'
+  ];
+
+  return _.sample(responses);
+}
+
+
+// volume-related responses
 controller.hears('louder', directAddress, function(bot, message) {
   volume.louder(channel);
   volumeResponse(bot, message);
@@ -44,16 +61,4 @@ controller.hears('volume', directAddress, function(bot, message) {
 
 function volumeResponse(bot, message) {
   bot.reply(message, 'Volume set to ' + volume.value(message.channel));
-}
-
-function getResponse() {
-  var responses = [
-    'Sounds good',
-    'Thanks for coming',
-    'OK',
-    'Sure, why not',
-    'I understand'
-  ];
-
-  return _.sample(responses);
 }
