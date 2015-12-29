@@ -35,7 +35,7 @@ function getResponse() {
 
 
 controller.hears('video', directAddress, function(bot, message) {
-  bot.reply(message, 'https://www.youtube.com/watch?v=Tvu2ZI329V4');
+  bot.reply(message, 'https://www.youtube.com/watch?v=kg2UlYDswSc');
 });
 
 // volume-related responses
