@@ -14,25 +14,37 @@ controller.spawn({
 
 
 controller.on('ambient', function (bot, message) {
-  console.log(message);
+  volume.defaultIfNotSet(message.channel);
   bot.reply(message, getResponse());
 });
 
 controller.hears('louder', directAddress, function(bot, message) {
-  volume.louder();
+  volume.louder(channel);
+  volumeResponse(bot, message);
 });
 
 controller.hears('quieter', directAddress, function(bot, message) {
-  volume.quieter()
+  volume.quieter(message.channel);
+  volumeResponse(bot, message);
 });
 
 controller.hears('loudest', directAddress, function(bot, message) {
-  volume.loudest();
+  volume.loudest(message.channel);
+  volumeResponse(bot, message);
 });
 
 controller.hears('quietest', directAddress, function(bot, message) {
-  volume.quietest();
+  volume.quietest(message.channel);
+  volumeResponse(bot, message);
 });
+
+controller.hears('volume', directAddress, function(bot, message) {
+  volumeResponse(bot, message);
+});
+
+function volumeResponse(bot, message) {
+  bot.reply(message, 'Volume set to ' + volume.value(message.channel));
+}
 
 function getResponse() {
   var responses = [
