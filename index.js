@@ -1,5 +1,7 @@
 var Botkit = require('botkit')
-  , _ = require('lodash');
+  , _ = require('lodash')
+  , volume = require('./lib/volume')
+  , directAddress = ['direct_message','direct_mention','mention'];
 
 var controller = Botkit.slackbot({
   debug: false
@@ -11,9 +13,25 @@ controller.spawn({
 }).startRTM();
 
 
-// give the bot something to listen for.
 controller.on('ambient', function (bot, message) {
+  console.log(message);
   bot.reply(message, getResponse());
+});
+
+controller.hears('louder', directAddress, function(bot, message) {
+  volume.louder();
+});
+
+controller.hears('quieter', directAddress, function(bot, message) {
+  volume.quieter()
+});
+
+controller.hears('loudest', directAddress, function(bot, message) {
+  volume.loudest();
+});
+
+controller.hears('quietest', directAddress, function(bot, message) {
+  volume.quietest();
 });
 
 function getResponse() {
