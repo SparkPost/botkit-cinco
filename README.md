@@ -12,8 +12,8 @@ the volume up the bot will respond twice as often. Turn the volume down and the 
 
 ## How?
 
-The easiest way is to fork this repo and set up a remote for a Heroku instance. Then configure your bot in Slack at
-https://your-team.slack.com/services/new/bot. You'll need to set your API token as a env var named `SLACK_API_TOKEN`.
+The easiest way is to clone this repo and set up a remote for a Heroku instance. Then configure your bot in Slack at
+https://my.slack.com/services/new/bot. You'll need to set your API token as a env var named `SLACK_API_TOKEN`.
 
 Then invite your bot to a channel and it's party time!
 
